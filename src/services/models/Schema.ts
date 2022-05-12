@@ -60,6 +60,8 @@ export class SchemaModel {
   rawSchema: OpenAPISchema;
   schema: MergedOpenAPISchema;
   extensions?: Record<string, any>;
+  minItems?: number;
+  maxItems?: number;
 
   /**
    * @param isChild if schema discriminator Child
@@ -120,6 +122,8 @@ export class SchemaModel {
     this.default = schema.default;
     this.readOnly = !!schema.readOnly;
     this.writeOnly = !!schema.writeOnly;
+    this.minItems = schema.minItems;
+    this.maxItems = schema.maxItems;
 
     if (this.isCircular) {
       return;
